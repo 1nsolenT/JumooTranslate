@@ -1,0 +1,18 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.HomePage>
+@using ContentModels = Umbraco.Web.PublishedContentModels;
+@{
+	Layout = "Layout.cshtml";
+    var sectionContent = Model.Content.ContentPicker as ContentModels.Section;
+}
+<div>
+    @Model.Content.StringProperty <br />
+    @sectionContent.Header <br />
+    @sectionContent.SubHeader <br />
+    <hr />
+    <ul>
+        @foreach (var item in Model.Content.ArchetypeProperty)
+        {
+            <li>@item.GetValue("text") || @item.GetValue("longText")</li>
+        }
+    </ul>
+</div>
